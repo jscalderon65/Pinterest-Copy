@@ -1,5 +1,15 @@
-Video´s info through Youtube API
+# Deadline may 23
 
-https://www.googleapis.com/youtube/v3/videos?part=snippet&id=[VIDEO-ID]&key=[CREDENTIAL]
+# Ideas
+## Desktop version
+### Copy Pinterest web version styles
 
-deadline may 23
+## Mobile version
+### Copy Pinterest mobile version styles
+
+# Information
+## Youtube API methods
+### https://gist.github.com/jscalderon65/e0a4ae2cb81d0c61e4eec06fbacf55b1
+
+## Mockups
+### https://balsamiq.cloud/s6367gs/projects
