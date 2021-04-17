@@ -1,11 +1,8 @@
+import {MainRouter} from './Routers';
+import './Styles/Styles.scss';
 const App = () => {
   return (
-    <blockquote class="blockquote">
-      <p class="mb-0">
-        Hola mundo
-      </p>
-    </blockquote>
+    <MainRouter />
   );
 };
-
 export default App;

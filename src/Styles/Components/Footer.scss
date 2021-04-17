@@ -1,0 +1,30 @@
+.Footer-footer-container{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 100px;
+}
+.Footer-menu{
+    min-width: 220px;
+    padding: 20px 10px;
+    border-radius:50px;
+    width:70%;
+    background-color:$secondary-color;
+    display:flex;
+    justify-content: space-around;
+}
+.Footer-navlink{
+    color:$icons-color;
+}
+.Footer-navlink:hover{
+    color:white;
+}
+.Footer-icon-styles{
+    font-size: 1.5rem;
+    cursor:pointer;
+}
+.Footer-icon-active{
+    color:white;
+}
