@@ -13,6 +13,7 @@ body,html {
 @media(max-width:$media-query-value) {
     body,html {  
         background-color: $main-color;
+        color:white;
     }}
 body,
 html>div{

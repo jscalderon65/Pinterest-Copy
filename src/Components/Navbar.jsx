@@ -55,12 +55,13 @@ const Navbar = () => {
           <b>Fotos</b>
         </div>
       </NavLink>
-      <div className="Navbar-input-container">
+      <NavLink to="/home" className="Navbar-input-container">
         {onFocusInput && !inputSearch && (
           <SearchOutlined className="Navbar-input-icon" />
         )}
         <input
           type="text"
+          autoComplete="off"
           name="inputSearch"
           onBlur={onFocusHandler}
           onFocus={onFocusHandler}
@@ -75,7 +76,7 @@ const Navbar = () => {
             className="Navbar-clear-icon"
           />
         )}
-      </div>
+      </NavLink>
       <NavLink
         to="/messages"
         className="Navbar-icon-messages"

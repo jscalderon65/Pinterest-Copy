@@ -1,3 +1,12 @@
 .Container-container-styles{
     margin-top: 100px;
+    height:100vh;
+    transition: background-color 0.5s;
+}
+
+@media(max-width:600px){
+    .Container-container-styles{
+        margin-top: 70px;
+        background-color: $main-color;
+    }
 }

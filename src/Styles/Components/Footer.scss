@@ -28,3 +28,35 @@
 .Footer-icon-active{
     color:white;
 }
+.Footer-navbar-container{
+    position: fixed;
+    overflow:hidden;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    height: 60px;
+    color:white;
+    background-color:$main-color;
+    display: flex;
+}
+.Footer-navbar-item{
+    color:white;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    padding: 20px 20px;
+    border-radius: 40px;
+    transition: background-color 0.5s, color 0.5s;
+}
+.Footer-navbar-item:hover{
+    color:white;
+}
+.Footer-navbar-item-active{
+    background-color:white;
+    color:black;
+}
+.Footer-navbar-item-active:hover{
+    color:black;
+}

@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color:white;
 }
 .Navbar-input-icon {
   margin-right: 10px;
@@ -52,14 +53,20 @@
   background: #efefef;
 }
 .Navbar-input-container {
+  margin-left: 15px;
+  margin-right: 15px;
   flex: 1;
   display: flex;
   align-items: center;
   height: 50px;
   border-radius: 50px;
   padding: 10px;
+  color:black;
   background-color: #efefef;
   transition: background-color 0.2s, border 0.2s, height 0.2s;
+}
+.Navbar-input-container:hover{
+  color:black;
 }
 .Navbar-input {
   background-color: transparent;
@@ -67,6 +74,7 @@
   height: 100%;
   font-size: 1rem;
   flex: 1;
+  color:black;
 }
 .Navbar-input:focus {
   outline: 0px;
@@ -74,6 +82,7 @@
 .Navbar-input-container:focus-within {
   border: solid #7ec0ff 4px;
   height: 56px;
+  color:black;
 }
 .Navbar-input-container:hover {
   background-color: #e1e1e1;
