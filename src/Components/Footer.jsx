@@ -8,7 +8,7 @@ import {
 import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="Footer-footer-container">
+    <div className="animate__animated animate__bounceInUp Footer-footer-container">
       <div className="Footer-menu">
         <NavLink
           to="/home"
