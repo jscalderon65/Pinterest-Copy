@@ -1,0 +1,86 @@
+.CardContainer-container {
+  width: 100%;
+  margin: auto;
+  display: block;
+  cursor: zoom-in;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+.CardContainer-container:hover{
+   background:rgba(0,0,0,.1);
+  }
+.CardContainer-gallery_img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+}
+
+.CardContainer-button-container {
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.hover-button .hover-button--on,
+.hover-button:hover .hover-button--off {
+  display: none;
+}
+.hover-button:hover .hover-button--on {
+  display: inline;
+}
+.CardContainer-button-style {
+  border: 0px;
+  border-radius: 100%;
+  width: 30px;
+  background-color:#efefef;
+  height: 30px;
+  margin-left: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.CardContainer-button-style:hover{
+    filter: brightness(95%); 
+  }
+.CardContainer-button-style:focus {
+  outline: 0px;
+}
+@media (max-width: 600px) {
+  .CardContainer-gallery_img {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .hover-button .hover-button--on,
+  .hover-button:hover .hover-button--off {
+    display: inline;
+  }
+  .CardContainer-button-style {
+    color:white;
+    background-color:black;
+  }
+}
+.CardContainer-title-drawer{
+    display:flex;
+    align-items:center !important;
+    color:white;
+    padding: 10px;
+    border-bottom: solid 1px #767676;
+    margin-bottom: 20px;
+}
+.CardContainer-title-drawer>h5{
+    color:white;
+    margin-left: 30px;
+    align-self: center;
+    margin:0px  auto 0px 20px;
+    height:100%;
+}
+.CardContainer-drawer-content>h5{
+    color:white;
+    cursor:pointer;
+}
+.CardContainer-drawer-content{
+    padding:10px;
+    height:50%;
+    border-bottom: solid 1px #767676;
+}
