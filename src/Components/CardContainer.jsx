@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Popover, Button, Drawer, Typography } from "antd";
+import { Popover, Button, Drawer} from "antd";
 import { useMediaQuery } from "my-customhook-collection";
 import {
   UploadOutlined,
@@ -17,7 +17,11 @@ const CardContainer = ({ children }) => {
     setVisible(false);
   };
   const mediaQuery = useMediaQuery("(max-width:600px)");
-  const text = <h4 style={{ textAlign: "center" }}>Opciones</h4>;
+  const text = (
+    <h5 style={{ textAlign: "left" }}>
+      <b>Opciones</b>
+    </h5>
+  );
   const content = (
     <Button style={{ width: "100%" }} icon={<DownloadOutlined />} size="large">
       Descargar imagen
@@ -29,6 +33,24 @@ const CardContainer = ({ children }) => {
       <div className="CardContainer-button-container">
         {!mediaQuery ? (
           <>
+            <div className="CardContainer-title-container">
+              <img
+                src={
+                  "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                }
+                alt="chi"
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "100%",
+                  alignSelf: "center",
+                }}
+              />
+              <b>
+                Caraluna - Bacilos vers...
+              </b>
+            </div>
+            <br />
             <button className="CardContainer-button-style hover-button--on">
               <UploadOutlined />
             </button>
@@ -69,12 +91,11 @@ const CardContainer = ({ children }) => {
                     fontSize: "25px",
 
                     color: "#909090",
-           
                   }}
                   onClick={onClose}
                 />
                 <h5>
-                 <b> Opciones </b>
+                  <b> Opciones </b>
                 </h5>
               </div>
               <div className="CardContainer-drawer-content">

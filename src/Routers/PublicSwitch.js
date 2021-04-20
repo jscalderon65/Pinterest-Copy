@@ -1,10 +1,11 @@
 import React from "react";
-import { Navbar, Footer, HomeContainer } from "../Components";
+import { BackTop } from 'antd';
+import { Navbar, Footer, HomeContainer} from "../Components";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useMediaQuery } from "my-customhook-collection";
 const PublicSwitch = () => {
   const mediaQuery = useMediaQuery("(max-width: 600px");
-  const MainMenu = mediaQuery ? <Footer /> : <Navbar />;
+  const MainMenu = mediaQuery ? <Footer /> :<><BackTop/> <Navbar /> </>;
   return (
     <Switch>
       <>
