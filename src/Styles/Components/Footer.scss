@@ -5,6 +5,7 @@
     width: 100%;
     bottom: 0;
     margin-bottom: 50px;
+    z-index: 1001;
 }
 .Footer-menu{
     min-width: 220px;
@@ -29,6 +30,7 @@
     color:white;
 }
 .Footer-navbar-container{
+    z-index: 1001;
     position: fixed;
     overflow:hidden;
     top: 0;

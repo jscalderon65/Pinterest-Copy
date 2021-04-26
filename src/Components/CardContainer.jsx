@@ -28,13 +28,14 @@ const CardContainer = ({ children }) => {
     </Button>
   );
   return (
-    <div className="CardContainer-container hover-button">
+    <div className="CardContainer-container hover-button animate__animated animate__fadeIn">
       {children}
       <div className="CardContainer-button-container">
         {!mediaQuery ? (
           <>
             <div className="CardContainer-title-container">
               <img
+              className="CardContainer-img-hover"
                 src={
                   "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {logout} from '../Firebase/FirebaseAuth';
 import { useForm } from "my-customhook-collection";
 import {
   SearchOutlined,
@@ -14,7 +15,7 @@ const Navbar = () => {
   const { Item } = Menu;
   const menu = (
     <Menu>
-      <Item danger>
+      <Item onClick={logout} danger>
         <b>Cerrar sesión</b>
       </Item>
     </Menu>

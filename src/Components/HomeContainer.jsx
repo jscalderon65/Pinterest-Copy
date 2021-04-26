@@ -1,11 +1,15 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { CardContainer } from "./index.js";
 import { Link } from "react-router-dom";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import {animateScroll as scroll} from 'react-scroll';
 const HomeContainer = () => {
+  useEffect(()=>{
+    scroll.scrollToTop();
+  },[]);
   return (
     <>
-      <div className="HomeContainer-home-container">
+      <div className="HomeContainer-home-container  animate__animated animate__fadeIn">
         <ResponsiveMasonry
           className="masonry"
           columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
