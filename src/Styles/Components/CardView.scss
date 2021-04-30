@@ -1,0 +1,49 @@
+.CardView-container{
+    margin:120px auto;
+    width: 80vw;
+    height: 80vh;
+    border-radius: 40px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+}
+.CardView-back-button{
+    position: absolute;
+    left: 20px;
+    top:120px;
+    border-radius:100%;
+    padding:10px;
+    cursor: pointer;
+}
+.CardView-back-button:hover{
+    background: #d4d4d4;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  }
+.CardView-img-container{
+    height: 80vh;
+    margin:0;
+    padding:0;
+}
+.CardView-img{
+    width: 100%;
+    object-fit: cover;
+    height:80vh;
+    border-top-left-radius:40px;
+    border-bottom-left-radius:40px;
+    
+}
+@media(max-width: 600px){
+    .CardView-back-button{
+        display: none;
+    }
+    .CardView-container{
+        margin:0px;
+        border-radius:0px;
+        border:solid;
+        width: 100vw;
+        height:auto;
+        min-height: 300px;
+    }
+}

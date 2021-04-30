@@ -9,7 +9,7 @@ const MainRouter = () => {
     return (
         <BrowserRouter>
             {localStorage.getItem("isLogged") === "true" ?
-                isOn && <PrivateSwitch /> : <PublicSwitch /> 
+                isOn && <PrivateSwitch /> : <PublicSwitch />
             }
         </BrowserRouter>
     )

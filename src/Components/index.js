@@ -4,3 +4,4 @@ export {default as HomeContainer} from './HomeContainer.jsx';
 export {default as CardContainer} from './CardContainer.jsx';
 export {default as LoadingIcon} from './LoadingIcon.jsx';
 export {default as SettingsProfile} from './SettingsProfile.jsx';
+export {default as CardView} from './CardView.jsx';
