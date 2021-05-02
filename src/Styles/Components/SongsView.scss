@@ -1,0 +1,48 @@
+.SongsView-navbar-container{
+    height:auto;
+    padding:10px;
+    position: fixed;
+    z-index: 1001;
+    top:90px;
+    font-weight: 900;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    background-color:white;
+}
+.SongsView-plus-button{
+    border-radius:100%;
+    padding:12px;
+    cursor: pointer;
+}
+.SongsView-plus-button:hover{
+    background: #d4d4d4;
+}
+.SongsView-navbar-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width: 600px){
+    .SongsView-navbar-container{
+        top:0;
+        height:100px;
+        background-color:$main-color;
+        color:white;
+    }
+    .SongsView-plus-button:hover{
+        background: transparent;
+    }
+    .SongsView-navbar-title{
+        margin-top: 20px;
+        padding: 20px 30px;
+        justify-content:space-between;
+        color:white;
+    }
+    .SongsView-navbar-title>h4{
+        color:white;
+    }
+}

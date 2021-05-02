@@ -1,0 +1,59 @@
+
+.PinBuilder-container {
+  margin:120px auto;
+  width: 80vw;
+  height: 80vh;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-rows: 20% auto;
+}
+.PinBuilder-button-select{
+    display: flex;
+    align-items: center
+}
+.PinBuilder-button-select>div{
+    background-color:#EFEFEF;
+    border:solid #EFEFEF 2.5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.PinBuilder-container-save-button{
+    background:#E60023;
+    color:white;
+    border:solid #E60023 1px;
+    padding: 10px 20px;
+    font-weight: 900;
+    font-size:1rem;
+    outline: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+.PinBuilder-container-save-button:focus{
+    outline:none;
+}
+.PinBuilder-container:nth-child(1)>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top:50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.PinBuilder-container:nth-child(2)>div{
+    border:solid;
+}
+@media(max-width: 600px){
+    .PinBuilder-button-select>div{
+        color:black;
+    }
+    .PinBuilder-container:nth-child(1)>div{
+        padding:0px;
+    }
+}
+
