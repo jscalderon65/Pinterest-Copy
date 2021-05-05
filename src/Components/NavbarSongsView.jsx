@@ -6,6 +6,7 @@ const NavbarSongsView = ({ NavbarTitle, PlusFunction }) => {
   let history = useHistory();
   const mediaQuery = useMediaQuery("(max-width: 600px)");
   return (
+    <>
     <div className="SongsView-navbar-container">
       <div className="SongsView-navbar-title">
         {mediaQuery && (
@@ -22,6 +23,7 @@ const NavbarSongsView = ({ NavbarTitle, PlusFunction }) => {
         <PlusOutlined style={{ fontSize: "20px" }} />
       </div>
     </div>
+    </>
   );
 };
 export default NavbarSongsView;

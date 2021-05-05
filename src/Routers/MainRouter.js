@@ -5,11 +5,11 @@ import { firebase } from "../Firebase/FirebaseConfig";
 import { useFirebaseUser } from "my-customhook-collection";
 import { BrowserRouter } from 'react-router-dom';
 const MainRouter = () => {
-    const [isOn] = useFirebaseUser(firebase);
+    const [userInfo,isOn] = useFirebaseUser(firebase);
     return (
         <BrowserRouter>
-            {localStorage.getItem("isLogged") === "true" ?
-                isOn && <PrivateSwitch /> : <PublicSwitch />
+            {
+                isOn?<PrivateSwitch userInfo={userInfo} />:<PublicSwitch />
             }
         </BrowserRouter>
     )
