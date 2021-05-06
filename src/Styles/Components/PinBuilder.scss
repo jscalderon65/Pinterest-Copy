@@ -75,12 +75,13 @@
 }
 
 .PinBuilder-input-title {
+  width: 100%;
   border: none;
   border-bottom: solid;
   color: #767676;
   font-size: 2.5rem;
   font-weight: 900;
-  width: 100%;
+  text-align:center;
   transition: border-bottom 0.5s;
 }
 .PinBuilder-input-title:focus {

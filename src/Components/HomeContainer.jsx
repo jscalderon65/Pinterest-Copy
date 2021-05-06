@@ -1,110 +1,52 @@
-import React,{useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import LoadingIcon from "./LoadingIcon";
+import { firebase } from "../Firebase/FirebaseConfig.js";
+import { useOnSnapshotCollection } from "my-customhook-collection";
 import { CardContainer } from "./index.js";
 import { Link } from "react-router-dom";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import {animateScroll as scroll} from 'react-scroll';
+import { animateScroll as scroll } from "react-scroll";
 const HomeContainer = () => {
-  useEffect(()=>{
+  const db = firebase.firestore();
+  const refColl = db.collection("Content");
+  const [Data] = useOnSnapshotCollection(refColl);
+  const [DataInfo, setDataInfo] = useState([]);
+  useEffect(() => {
     scroll.scrollToTop();
-  },[]);
-  return (
+  }, []);
+  useEffect(() => {
+    Data &&
+      setDataInfo(
+        Data.reduce((acc, prev) => {
+          let [...examples] = prev.contentArray;
+          return [...acc, ...examples];
+        }, [])
+      );
+  }, [Data]);
+  console.log(DataInfo);
+  return Data ? (
     <>
       <div className="HomeContainer-home-container  animate__animated animate__fadeIn">
         <ResponsiveMasonry
           className="masonry"
-          columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
+          columnsCountBreakPoints={{ 350: 2, 800: 3, 1100: 4 }}
         >
           <Masonry gutter="15px" columnsCount={4}>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/1000/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/500"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
-            <CardContainer>
-              <Link to="/home/id">
-                <img
-                  className="CardContainer-gallery_img"
-                  src="https://picsum.photos/id/237/200/300"
-                  alt="chi"
-                />
-              </Link>
-            </CardContainer>
+            {DataInfo.map((item) => (
+              <CardContainer
+                Title={item.YoutubeInfo.title}
+                ChannelUrlImage={item.YoutubeInfo.urlImageChannel}
+                key={item.Date}
+              >
+                <Link to="/home/id">
+                  <img
+                    className="CardContainer-gallery_img"
+                    src={item.YoutubeInfo.urlImageVideo}
+                    alt={item.YoutubeInfo.title}
+                  />
+                </Link>
+              </CardContainer>
+            ))}
           </Masonry>
         </ResponsiveMasonry>
       </div>
@@ -112,6 +54,18 @@ const HomeContainer = () => {
       <br />
       <br />
       <br />
+    </>
+  ) : (
+    <>
+      <div
+        style={{
+          marginTop: "150px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <LoadingIcon />
+      </div>
     </>
   );
 };

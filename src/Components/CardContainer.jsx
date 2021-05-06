@@ -7,7 +7,7 @@ import {
   DownloadOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-const CardContainer = ({ children }) => {
+const CardContainer = ({ children, Title, ChannelUrlImage}) => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -36,21 +36,20 @@ const CardContainer = ({ children }) => {
             <div className="CardContainer-title-container">
               <img
               className="CardContainer-img-hover"
-                src={
-                  "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                }
-                alt="chi"
+                src={ChannelUrlImage}
+                alt="No"
                 style={{
                   width: "30px",
                   height: "30px",
                   borderRadius: "100%",
                   alignSelf: "center",
+                  marginRight:"10px",
+                  zIndex:"1000"
                 }}
               />
-              <b>
-                Caraluna - Bacilos vers...
+              <b style={{textOverflow:"clip"}}>
+               {Title.length>=23?`${Title.slice(0,23)}...`:Title}
               </b>
-            </div>
             <br />
             <button className="CardContainer-button-style hover-button--on">
               <UploadOutlined />
@@ -65,6 +64,7 @@ const CardContainer = ({ children }) => {
                 <EllipsisOutlined />
               </button>
             </Popover>
+            </div>
           </>
         ) : (
           <>
@@ -72,7 +72,7 @@ const CardContainer = ({ children }) => {
               onClick={showDrawer}
               className="CardContainer-button-style hover-button--on"
             >
-              <EllipsisOutlined />{" "}
+              <EllipsisOutlined />
             </button>
             <Drawer
               title={null}

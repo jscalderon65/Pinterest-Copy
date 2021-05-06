@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ClearOutlined, UploadOutlined } from "@ant-design/icons";
+import { getYoutubeSongInfo } from "./YoutubeSongRegister/GetYoutubeInfo";
+import { AddSong } from "./YoutubeSongRegister/FirebaseFunctions";
 import { message, Button } from "antd";
 import getYouTubeID from "get-youtube-id";
 import { useForm } from "my-customhook-collection";
-const YoutubeSongBuilder = ({userInfo:{displayName}}) => {
+const YoutubeSongBuilder = ({ userInfo }) => {
   const { success, error } = message;
   const [{ YoutubeUrl }, onChangeInputValue, setInputValues] = useForm({
     YoutubeUrl: "",
@@ -15,7 +17,6 @@ const YoutubeSongBuilder = ({userInfo:{displayName}}) => {
     });
   };
   const onCancelHandler = () => {
-    error("url no válida");
     setInputValues({
       YoutubeUrl: "",
     });
@@ -23,11 +24,21 @@ const YoutubeSongBuilder = ({userInfo:{displayName}}) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setUrlId(getYouTubeID(YoutubeUrl, { fuzzy: false }));
-    urlId ? success("url válida") : onCancelHandler();
+    if (urlId) {
+      success("url válida");
+      getYoutubeSongInfo(urlId).then((YoutubeInfo) =>
+        AddSong(YoutubeInfo, userInfo).then(() => onCancelHandler())
+      );
+    } else {
+      error("url no válida");
+      setInputValues({
+        YoutubeUrl: "",
+      });
+    }
   };
   const onFocusInput = () => {
-    document.getElementById("YoutubeUrl").focus()
-  }
+    document.getElementById("YoutubeUrl").focus();
+  };
   useEffect(() => {
     setUrlId(getYouTubeID(YoutubeUrl, { fuzzy: false }));
   }, [YoutubeUrl]);
@@ -51,12 +62,17 @@ const YoutubeSongBuilder = ({userInfo:{displayName}}) => {
           ></iframe>
         </div>
       ) : (
-        <div onClick={onFocusInput} className="PinBuilder-form-youtube-prev-preview-video">
+        <div
+          onClick={onFocusInput}
+          className="PinBuilder-form-youtube-prev-preview-video"
+        >
           <div>
             <div>
               <UploadOutlined />
               <br />
-              <p style={{textAlign:"center"}}>Ingresa un url de youtube válida</p>
+              <p style={{ textAlign: "center" }}>
+                Ingresa un url de youtube válida
+              </p>
             </div>
           </div>
         </div>
@@ -64,10 +80,10 @@ const YoutubeSongBuilder = ({userInfo:{displayName}}) => {
       <div className="PinBuilder-form-youtube-song-input-container">
         <div className="PinBuilder-profile">
           <div>
-            <b>{displayName[0]}</b>
+            <b>{userInfo.displayName[0]}</b>
           </div>
           <div>
-            <b>{displayName.toLowerCase()}</b>
+            <b>{userInfo.displayName.toLowerCase()}</b>
           </div>
         </div>
         <input
