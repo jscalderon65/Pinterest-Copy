@@ -23,7 +23,7 @@ const HomeContainer = () => {
         }, [])
       );
   }, [Data]);
-  console.log(DataInfo);
+/*   console.log(DataInfo); */
   return Data ? (
     <>
       <div className="HomeContainer-home-container  animate__animated animate__fadeIn">

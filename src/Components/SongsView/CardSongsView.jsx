@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { Popover, Button, Drawer, Tooltip } from "antd";
+import { deleteSong } from "./SongsViewFunctions/FirebaseFunctions.js";
+import { Popover, Button, Drawer, Tooltip, Popconfirm } from "antd";
 import { useMediaQuery } from "my-customhook-collection";
-import ShareModal from './ShareModal';
 import {
   EllipsisOutlined,
-  DownloadOutlined,
   CloseOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
-const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl }) => {
+const CardSongsView = ({
+  children,
+  Title = "",
+  ChannelUrlImage,
+  userInfo,
+  ItemId,
+}) => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -22,13 +28,25 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
       <b>Opciones</b>
     </h5>
   );
+  const onDeleteSong = (DocId,ItemId) => {
+    deleteSong(DocId,ItemId);
+  };
   const content = (
-    <Button style={{ width: "100%" }}  size="large">
-      <a href={ImageHref} target="blank" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-      <DownloadOutlined style={{marginRight:"5px"}}/>
-      Descargar imagen 
-      </a>
-    </Button>
+    <Popconfirm
+      placement="topLeft"
+      title={"¿Quieres eliminar el Pin?"}
+      onConfirm={()=>onDeleteSong(userInfo.uid,ItemId)}
+      okText="Yes"
+      cancelText="No"
+    >
+      <Button
+        style={{ width: "100%", display: "flex", alignItems: "center" }}
+        size="large"
+      >
+        <DeleteOutlined style={{ marginRight: "5px" }} />
+        Eliminar Pin
+      </Button>
+    </Popconfirm>
   );
   return (
     <div className="CardContainer-container hover-button animate__animated animate__fadeIn">
@@ -50,13 +68,14 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
                   zIndex: "1000",
                 }}
               />
-              {Title&&<Tooltip placement="top" title={Title}>
-                <b style={{ textOverflow: "clip" }}>
-                  {Title.length >= 23 ? `${Title.slice(0, 23)}...` : Title}
-                </b>
-              </Tooltip>}
+              {Title && (
+                <Tooltip placement="top" title={Title}>
+                  <b style={{ textOverflow: "clip" }}>
+                    {Title.length >= 23 ? `${Title.slice(0, 23)}...` : Title}
+                  </b>
+                </Tooltip>
+              )}
               <br />
-              <ShareModal MainUrl={MainUrl}/>
               <Popover
                 placement="topRight"
                 title={text}
@@ -84,13 +103,11 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
               placement="bottom"
               visible={visible}
               zIndex={1010}
-              width={200}
               bodyStyle={{
                 backgroundColor: "#282829",
                 color: "white",
                 padding: "0px",
               }}
-              centered
             >
               <div className="CardContainer-title-drawer">
                 <CloseOutlined
@@ -106,12 +123,17 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
                 </h5>
               </div>
               <div className="CardContainer-drawer-content">
-                <h5>
-                <a href={ImageHref} target="blank" style={{color:"white"}}>
-                  <b>Descargar imagen</b>
-                </a>
-                </h5>
-                <ShareModal MainUrl={MainUrl} IsResponsive onClickModal={onClose}/>
+                <Popconfirm
+                  placement="topLeft"
+                  title={"¿Quieres eliminar el Pin?"}
+                  onConfirm={() => alert("chi")}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <h5>
+                    <b>Eliminar Pin</b>
+                  </h5>
+                </Popconfirm>
               </div>
             </Drawer>
           </>
@@ -121,4 +143,4 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
   );
 };
 
-export default CardContainer;
+export default CardSongsView;
