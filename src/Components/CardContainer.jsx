@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Popover, Button, Drawer} from "antd";
+import { Popover, Button, Drawer, Tooltip } from "antd";
 import { useMediaQuery } from "my-customhook-collection";
+import ShareModal from './ShareModal';
 import {
-  UploadOutlined,
   EllipsisOutlined,
   DownloadOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-const CardContainer = ({ children, Title, ChannelUrlImage}) => {
+const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl }) => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -23,8 +23,11 @@ const CardContainer = ({ children, Title, ChannelUrlImage}) => {
     </h5>
   );
   const content = (
-    <Button style={{ width: "100%" }} icon={<DownloadOutlined />} size="large">
-      Descargar imagen
+    <Button style={{ width: "100%" }}  size="large">
+      <a href={ImageHref} target="blank" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <DownloadOutlined style={{marginRight:"5px"}}/>
+      Descargar imagen 
+      </a>
     </Button>
   );
   return (
@@ -35,7 +38,7 @@ const CardContainer = ({ children, Title, ChannelUrlImage}) => {
           <>
             <div className="CardContainer-title-container">
               <img
-              className="CardContainer-img-hover"
+                className="CardContainer-img-hover"
                 src={ChannelUrlImage}
                 alt="No"
                 style={{
@@ -43,27 +46,27 @@ const CardContainer = ({ children, Title, ChannelUrlImage}) => {
                   height: "30px",
                   borderRadius: "100%",
                   alignSelf: "center",
-                  marginRight:"10px",
-                  zIndex:"1000"
+                  marginRight: "10px",
+                  zIndex: "1000",
                 }}
               />
-              <b style={{textOverflow:"clip"}}>
-               {Title.length>=23?`${Title.slice(0,23)}...`:Title}
-              </b>
-            <br />
-            <button className="CardContainer-button-style hover-button--on">
-              <UploadOutlined />
-            </button>
-            <Popover
-              placement="topRight"
-              title={text}
-              content={content}
-              trigger="click"
-            >
-              <button className="CardContainer-button-style hover-button--on">
-                <EllipsisOutlined />
-              </button>
-            </Popover>
+              {Title&&<Tooltip placement="top" title={Title}>
+                <b style={{ textOverflow: "clip" }}>
+                  {Title.length >= 23 ? `${Title.slice(0, 23)}...` : Title}
+                </b>
+              </Tooltip>}
+              <br />
+              <ShareModal MainUrl={MainUrl}/>
+              <Popover
+                placement="topRight"
+                title={text}
+                content={content}
+                trigger="click"
+              >
+                <button className="CardContainer-button-style hover-button--on">
+                  <EllipsisOutlined />
+                </button>
+              </Popover>
             </div>
           </>
         ) : (
@@ -101,8 +104,11 @@ const CardContainer = ({ children, Title, ChannelUrlImage}) => {
               </div>
               <div className="CardContainer-drawer-content">
                 <h5>
-                  <b>Descargar Imagen</b>
+                <a href={ImageHref} target="blank" style={{color:"white"}}>
+                  <b>Descargar imagen</b>
+                </a>
                 </h5>
+                <ShareModal MainUrl={MainUrl} IsResponsive/>
               </div>
             </Drawer>
           </>

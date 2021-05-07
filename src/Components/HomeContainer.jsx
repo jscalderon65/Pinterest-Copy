@@ -37,9 +37,11 @@ const HomeContainer = () => {
                 Title={item.YoutubeInfo.title}
                 ChannelUrlImage={item.YoutubeInfo.urlImageChannel}
                 key={item.Date}
+                ImageHref={item.YoutubeInfo.urlImageVideo}
+                MainUrl={item.YoutubeUrl}
               >
                 <Link to="/home/id">
-                  <img
+                <img
                     className="CardContainer-gallery_img"
                     src={item.YoutubeInfo.urlImageVideo}
                     alt={item.YoutubeInfo.title}

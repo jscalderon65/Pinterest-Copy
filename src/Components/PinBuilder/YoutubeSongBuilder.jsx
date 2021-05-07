@@ -27,7 +27,7 @@ const YoutubeSongBuilder = ({ userInfo }) => {
     if (urlId) {
       success("url válida");
       getYoutubeSongInfo(urlId).then((YoutubeInfo) =>
-        AddSong(YoutubeInfo, userInfo).then(() => onCancelHandler())
+        AddSong(YoutubeInfo, userInfo, YoutubeUrl).then(() => onCancelHandler())
       );
     } else {
       error("url no válida");
