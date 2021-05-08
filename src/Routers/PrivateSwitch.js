@@ -1,6 +1,6 @@
 import React from "react";
 import { BackTop } from 'antd';
-import { Navbar, Footer, HomeContainer, SettingsProfile, CardView, SongsView, CitesView, PhotosView, PinBuilder } from "../Components";
+import { Navbar, Footer, HomeContainer, SettingsProfile, CardView, SongsView,  PhotosView, PinBuilder } from "../Components";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useMediaQuery } from "my-customhook-collection";
 const PrivateSwitch = ({ userInfo }) => {
@@ -18,7 +18,6 @@ const PrivateSwitch = ({ userInfo }) => {
           <Route exact path="/messages" component={() => <h1>Messages</h1>} />
           <Route exact path="/settings" component={() => <SettingsProfile userInfo={userInfo} />} />
           <Route exact path="/settings/songs" component={() =><SongsView userInfo={userInfo} />} />
-          <Route exact path="/settings/cites" component={CitesView} />
           <Route exact path="/settings/photos" component={PhotosView} />
           <Route exact path="/search" component={() => <h1>Search</h1>} />
           <Redirect to="/home" />

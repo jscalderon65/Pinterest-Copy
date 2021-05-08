@@ -1,6 +1,5 @@
 import React from "react";
 import YoutubeSongBuilder from "./YoutubeSongBuilder";
-import CitesBuilder from "./CitesBuilder";
 import PhotosBuilder from "./PhotosBuilder";
 import { useParams, Redirect } from "react-router-dom";
 import { LeftOutlined } from "@ant-design/icons";
@@ -15,14 +14,11 @@ const PinBuilder = ({userInfo}) => {
   return(
     Params.type === "photos"
       ? <PhotosBuilder userInfo={userInfo}/>
-      : Params.type === "cites"
-      ? <CitesBuilder userInfo={userInfo}/>
       : Params.type === "songs"
       ? <YoutubeSongBuilder userInfo={userInfo}/>
       : null
   )}
   return Params.type === "photos" ||
-    Params.type === "cites" ||
     Params.type === "songs" ? (
     <div className="PinBuilder-container animate__animated animate__fadeIn">
       <div>
@@ -33,8 +29,6 @@ const PinBuilder = ({userInfo}) => {
           <div>
             {Params.type === "photos"
               ? "Fotos"
-              : Params.type === "cites"
-              ? "Frase"
               : Params.type === "songs"
               ? "Canción"
               : null}

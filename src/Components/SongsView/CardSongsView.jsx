@@ -42,6 +42,7 @@ const CardSongsView = ({
       <Button
         style={{ width: "100%", display: "flex", alignItems: "center" }}
         size="large"
+        danger
       >
         <DeleteOutlined style={{ marginRight: "5px" }} />
         Eliminar Pin

@@ -4,8 +4,9 @@
 
 ## Make structure for DB.
 
+## card -> reproductor song
+
 ## Pin-builder for:
-### Youtube song.
 ### Photo.
 ### Phrase.
 
