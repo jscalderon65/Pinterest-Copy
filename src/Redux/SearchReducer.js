@@ -7,7 +7,7 @@ export const SearchReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.getInputSearchValue:
       return {
-        InputSearhValue:action.value
+        InputSearchValue:action.value
       };
     default:
       return state;

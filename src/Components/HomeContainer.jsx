@@ -20,7 +20,7 @@ const HomeContainer = () => {
         Data.reduce((acc, prev) => {
           let [...examples] = prev.contentArray;
           return [...acc, ...examples];
-        }, [])
+        }, []).filter(item=>item.Type==="song")
       );
   }, [Data]);
 /*   console.log(DataInfo); */
