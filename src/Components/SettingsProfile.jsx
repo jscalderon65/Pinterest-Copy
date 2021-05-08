@@ -30,6 +30,10 @@ const SettingsProfile = ({ userInfo: { displayName } }) => {
       </div>
       <br />
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

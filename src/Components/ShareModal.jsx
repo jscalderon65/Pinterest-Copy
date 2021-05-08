@@ -56,7 +56,6 @@ const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        centered
         closeIcon={<CloseOutlined  style={mediaQuery?{color:"white"}:{color:"black"}}/>}
         zIndex={1000}
       >

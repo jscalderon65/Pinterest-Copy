@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {logout} from '../Firebase/FirebaseAuth';
+import { logout } from "../Firebase/FirebaseAuth";
 import { useForm } from "my-customhook-collection";
 import {
   SearchOutlined,
@@ -7,11 +7,15 @@ import {
   DownOutlined,
   MessageFilled,
   HomeFilled,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import { Menu, Dropdown } from "antd";
 import { NavLink, Link } from "react-router-dom";
+import {getInputSearchValue} from '../Redux/Actions/Search';
+import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
+  const ReducerValues = useSelector((state) => state.search);
+  const dispatch = useDispatch();
   const { Item } = Menu;
   const menu = (
     <Menu>
@@ -20,7 +24,7 @@ const Navbar = () => {
       </Item>
     </Menu>
   );
-
+  console.log("Navbar",ReducerValues);
   const [onFocusInput, setFocusInput] = useState(true);
   const [{ inputSearch }, onInputChange, setInputSearch] = useForm({
     inputSearch: "",
@@ -32,9 +36,14 @@ const Navbar = () => {
     setInputSearch({
       inputSearch: "",
     });
+    dispatch(getInputSearchValue(""));
   };
+  const onSubmitHandler = (e)=>{
+    e.preventDefault();
+    dispatch(getInputSearchValue(inputSearch));
+  }
   return (
-    <div className="animate__animated animate__fadeIn Navbar-navbar-container">
+    <form onSubmit={onSubmitHandler} className="animate__animated animate__fadeIn Navbar-navbar-container">
       <Link to="/home" className="Navbar-icon-messages">
         <HomeFilled />
       </Link>
@@ -56,7 +65,7 @@ const Navbar = () => {
           <b>Fotos</b>
         </div>
       </NavLink>
-      <NavLink to="/home" className="Navbar-input-container">
+      <NavLink to="/search" className="Navbar-input-container">
         {onFocusInput && !inputSearch && (
           <SearchOutlined className="Navbar-input-icon" />
         )}
@@ -95,7 +104,7 @@ const Navbar = () => {
       <Dropdown overlay={menu}>
         <DownOutlined className="Navbar-down-outlined" />
       </Dropdown>
-    </div>
+    </form>
   );
 };
 

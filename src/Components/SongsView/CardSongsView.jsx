@@ -127,7 +127,7 @@ const CardSongsView = ({
                 <Popconfirm
                   placement="topLeft"
                   title={"¿Quieres eliminar el Pin?"}
-                  onConfirm={() => alert("chi")}
+                  onConfirm={()=>onDeleteSong(userInfo.uid,ItemId)}
                   okText="Yes"
                   cancelText="No"
                 >

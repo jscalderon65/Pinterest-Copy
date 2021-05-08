@@ -19,6 +19,7 @@ const AddSong = async (YoutubeInfo, UserInfo,YoutubeUrl) => {
                     contentArray: firebase.firestore.FieldValue.arrayUnion({
                         Date: moment().format('[Registrado el día] D[/]MM[/]YYYY [a las]  h:mm:ss a'),
                         YoutubeInfo,
+                        Title:YoutubeInfo.title,
                         Type:"song",
                         YoutubeUrl,
                         UserName: UserInfo.displayName,
@@ -35,6 +36,7 @@ const AddSong = async (YoutubeInfo, UserInfo,YoutubeUrl) => {
             .set({
                 contentArray: firebase.firestore.FieldValue.arrayUnion({
                     Date: moment().format('[Registrado el día] D[/]MM[/]YYYY [a las]  h:mm:ss a'),
+                    Title:YoutubeInfo.title,
                     YoutubeInfo,
                     Type:"song",
                     YoutubeUrl,
