@@ -9,22 +9,24 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div className="Footer-navbar-container animate__animated animate__bounceInDown">
-        <NavLink
-          className="Footer-navbar-item"
-          activeClassName="Footer-navbar-item-active"
-          to="/home"
-        >
-          <b>Inicio</b>
-        </NavLink>
-        <NavLink
-          className="Footer-navbar-item"
-          activeClassName="Footer-navbar-item-active"
-          to="/gallery"
-        >
-          <b>Fotos</b>
-        </NavLink>
-      </div>
+
+        <div className="Footer-navbar-container animate__animated animate__bounceInDown">
+          <NavLink
+            className="Footer-navbar-item"
+            activeClassName="Footer-navbar-item-active"
+            to="/home"
+          >
+            <b>Inicio</b>
+          </NavLink>
+          <NavLink
+            className="Footer-navbar-item"
+            activeClassName="Footer-navbar-item-active"
+            to="/gallery"
+          >
+            <b>Fotos</b>
+          </NavLink>
+        </div>
+
 
       <div className="animate__animated animate__bounceInUp Footer-footer-container">
         <div className="Footer-menu">

@@ -1,0 +1,13 @@
+.SearchView-navbar-container{
+    z-index: 1001;
+    position: fixed;
+    overflow:hidden;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    height: auto;
+    border:solid;
+    color:white !important;
+    background-color:$main-color;
+    display: flex;
+}
