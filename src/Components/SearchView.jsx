@@ -9,8 +9,12 @@ import { useOnSnapshotCollection } from "my-customhook-collection";
 import { getInputSearchValue } from "../Redux/Actions/Search";
 import { CardContainer } from "./index.js";
 import { Link } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 const SearchView = () => {
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, []);
   const db = firebase.firestore();
   const refColl = db.collection("Content");
   const [Data] = useOnSnapshotCollection(refColl);
@@ -117,7 +121,7 @@ const SearchView = () => {
                   ImageHref={item.YoutubeInfo.urlImageVideo}
                   MainUrl={item.YoutubeUrl}
                 >
-                  <Link to="/home/id">
+                  <Link to={`/home/${item.id}`}>
                     <img
                       className="CardContainer-gallery_img"
                       src={item.YoutubeInfo.urlImageVideo}

@@ -54,7 +54,7 @@ const SongsView = ({ userInfo }) => {
                 MainUrl={item.YoutubeUrl}
                 ItemId={item.id}
               >
-                <Link to="/home/id">
+                <Link to={`/home/${item.id}`}>
                   <img
                     className="CardContainer-gallery_img"
                     src={item.YoutubeInfo.urlImageVideo}
