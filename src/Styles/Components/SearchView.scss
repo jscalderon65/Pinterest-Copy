@@ -6,8 +6,12 @@
     width: 100%;
     padding: 20px;
     height: auto;
-    border:solid;
     color:white !important;
     background-color:$main-color;
-    display: flex;
+    display: none;
+}
+@media(max-width: 600px){
+    .SearchView-navbar-container{
+        display: flex;
+    }   
 }

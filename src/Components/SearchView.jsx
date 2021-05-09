@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Typography } from "antd";
-import { useSelector } from "react-redux";
+import { Input,Empty } from "antd";
+import LoadingIcon from "./LoadingIcon";
+import { useForm } from "my-customhook-collection";
+import { SearchOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
 import { firebase } from "../Firebase/FirebaseConfig.js";
 import { useOnSnapshotCollection } from "my-customhook-collection";
+import { getInputSearchValue } from "../Redux/Actions/Search";
+import { CardContainer } from "./index.js";
+import { Link } from "react-router-dom";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 const SearchView = () => {
   const db = firebase.firestore();
   const refColl = db.collection("Content");
   const [Data] = useOnSnapshotCollection(refColl);
   const [DataInfo, setDataInfo] = useState([]);
   const { InputSearchValue } = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+  const [{ searchInputValues }, onChangeInputValue, setInputValues] = useForm({
+    searchInputValues: "",
+  });
   useEffect(() => {
     Data &&
       setDataInfo(
@@ -25,16 +36,115 @@ const SearchView = () => {
     title = title.toLowerCase();
     return data.filter((data) => data.Title.toLowerCase().includes(title));
   };
-  const CoursesFiltered = Data && getPinsByTitle(InputSearchValue, DataInfo);
+  let CoursesFiltered = Data && getPinsByTitle(InputSearchValue, DataInfo);
   console.log(DataInfo);
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(getInputSearchValue(searchInputValues));
+  };
+  const onClearInputValues = () => {
+    setInputValues({
+      searchInputValues: "",
+    });
+    dispatch(getInputSearchValue(""));
+  };
+  useEffect(()=>{
+    return()=>onClearInputValues();
+  },[])
   return (
     <div>
-      <div className="SearchView-navbar-container animate__animated animate__bounceInDown">
-        <input></input>
-      </div>
+      <form
+        onSubmit={onSubmitHandler}
+        className="SearchView-navbar-container animate__animated animate__bounceInDown"
+      >
+        <Input
+          style={{ borderRadius: "20px" }}
+          size="large"
+          name="searchInputValues"
+          value={searchInputValues}
+          onChange={onChangeInputValue}
+          placeholder="Buscar ..."
+          prefix={
+            searchInputValues ? null : (
+              <SearchOutlined className="animate__animated animate__fadeIn" />
+            )
+          }
+          suffix={
+            searchInputValues ? (
+              <CloseCircleOutlined
+                onClick={onClearInputValues}
+                className="animate__animated animate__fadeIn"
+              />
+            ) : null
+          }
+        />
+      </form>
       <br />
-      <h1>{InputSearchValue}</h1>
-      {JSON.stringify(CoursesFiltered)}
+      {Data ? (
+        <>
+        <div className="HomeContainer-home-container  animate__animated animate__fadeIn">
+          {CoursesFiltered.length > 0 ?(
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "2rem",
+                fontWeight: "900",
+              }}
+            >
+              Resultados encontrados ({CoursesFiltered.length})
+            </div>
+          ):<div
+          style={{
+            textAlign: "center",
+            fontSize: "2rem",
+            fontWeight: "900",
+          }}
+        >
+          Busca un pin por su título
+          <Empty/>
+        </div>}
+          <br />
+          <ResponsiveMasonry
+            className="masonry"
+            columnsCountBreakPoints={{ 350: 2, 800: 3, 1100: 4 }}
+          >
+            <Masonry gutter="15px" columnsCount={4}>
+              {CoursesFiltered.map((item) => (
+                <CardContainer
+                  Title={item.YoutubeInfo.title}
+                  ChannelUrlImage={item.YoutubeInfo.urlImageChannel}
+                  key={item.Date}
+                  ImageHref={item.YoutubeInfo.urlImageVideo}
+                  MainUrl={item.YoutubeUrl}
+                >
+                  <Link to="/home/id">
+                    <img
+                      className="CardContainer-gallery_img"
+                      src={item.YoutubeInfo.urlImageVideo}
+                      alt={item.YoutubeInfo.title}
+                    />
+                  </Link>
+                </CardContainer>
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
+        </div>
+        <br />
+      <br />
+      <br />
+      <br />
+        </>
+      ) : (
+        <div
+          style={{
+            marginTop: "150px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <LoadingIcon />
+        </div>
+      )}
     </div>
   );
 };
