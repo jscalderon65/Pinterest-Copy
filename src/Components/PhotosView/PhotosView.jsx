@@ -10,7 +10,7 @@ const PhotosView = () => {
     },[]);
     return (
         <>
-        <NavbarSongsView NavbarTitle={"Todas las canciones"} PlusFunction={PlusFunction}/>        
+        <NavbarSongsView NavbarTitle={"Todas las fotos"} PlusFunction={PlusFunction}/>        
         <div>
             Hola mundo
         </div>

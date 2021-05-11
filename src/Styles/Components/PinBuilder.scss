@@ -1,7 +1,7 @@
 .PinBuilder-container {
   margin: 120px auto;
   width: 80vw;
-  height: 80vh;
+  height: 84vh;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   display: grid;
@@ -48,10 +48,16 @@
   border: solid;
 }
 @media (max-width: 600px) {
+  .PinBuilder-container{
+    height:820px;
+  }
   .PinBuilder-button-select > div {
     color: black;
   }
   .PinBuilder-input-title {
+    background-color: black;
+  }
+  .PinBuilder-input-description{
     background-color: black;
   }
   .PinBuilder-container:nth-child(1) > div {
@@ -106,6 +112,7 @@
 .PinBuilder-form-youtube-prev-preview-video {
   cursor:pointer;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -153,4 +160,30 @@
   color: #111111;
   font-weight: 900;
   cursor: pointer;
+}
+
+.PinBuilder-form-photo{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+.PinBuilder-input-description {
+  width: 100%;
+  border: none;
+  border-bottom: solid;
+  color: #767676;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-align:center;
+  transition: border-bottom 0.5s;
+  border-bottom:solid #EFEFEF;
+}
+.PinBuilder-input-description:focus {
+  outline: none;
+  border-bottom: solid #0074e8;
+}
+@media (max-width: 600px) {
+  .PinBuilder-form-photo{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
