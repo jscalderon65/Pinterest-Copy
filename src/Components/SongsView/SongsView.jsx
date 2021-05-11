@@ -84,14 +84,6 @@ const SongsView = ({ userInfo }) => {
       </div>
     </>
   );
-  /*     return (
-        <>
-        <NavbarSongsView NavbarTitle={"Todas las canciones"} PlusFunction={PlusFunction}/>        
-        <div>
-            Hola mundo
-        </div>
-        </>
-    ) */
 };
 
 export default SongsView;

@@ -19,7 +19,7 @@ const PrivateSwitch = ({ userInfo }) => {
           <Route exact path="/messages" component={() => <h1>Messages</h1>} />
           <Route exact path="/settings" component={() => <SettingsProfile userInfo={userInfo} />} />
           <Route exact path="/settings/songs" component={() =><SongsView userInfo={userInfo} />} />
-          <Route exact path="/settings/photos" component={PhotosView} />
+          <Route exact path="/settings/photos" component={()=><PhotosView userInfo={userInfo} />} />
           <Route exact path="/search" component={()=><SearchView userInfo={userInfo} />}/>
           <Redirect to="/home" />
       </div>
