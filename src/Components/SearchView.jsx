@@ -63,6 +63,7 @@ const SearchView = () => {
       >
         <Input
           style={{ borderRadius: "20px" }}
+          autoComplete="off"
           size="large"
           name="searchInputValues"
           value={searchInputValues}
@@ -103,9 +104,8 @@ const SearchView = () => {
             fontSize: "2rem",
             fontWeight: "900",
           }}
-        >
-          Busca un pin por su título
-          <Empty/>
+        > 
+          <Empty description={"Busca un pin por su título"}/>
         </div>}
           <br />
           <ResponsiveMasonry

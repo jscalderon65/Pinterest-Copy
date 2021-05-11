@@ -1,27 +1,20 @@
-# Deadline may 
+# Deadline may 23
 
 # Main objectives:
 
-## Make structure for DB.
-
-## card -> reproductor song
-
 ## Pin-builder for:
 ### Photo.
-### Phrase.
+
+## CRUD for Photo
+
+## CardView for desktop and responsive mode.
+
+## Login
 
 _moment().format('[Registrado el día] D[/]MM[/]YYYY [a las]  h:mm:ss a')_
 
 COLLECTION: CONTENT => 
                         UID1:{
-                            phrases:[
-                                {
-                                    date,
-                                    content,
-                                    color,
-                                    userInfo
-                                }
-                            ],
                             photo:[
                                 {
                                     date,
