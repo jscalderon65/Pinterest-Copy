@@ -5,7 +5,7 @@
     border-radius: 40px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     grid-template-rows: 1fr;
 }
 .CardView-back-button{
@@ -33,6 +33,57 @@
     border-bottom-left-radius:40px;
     
 }
+.CardView-content-buttons{
+    padding-left:20px;
+    padding-right:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.CardView-content{
+    display:grid;
+    grid-template-rows:20% 80%; 
+    padding:20px;
+    align-items:start;
+}
+
+.CardView-main-info-title{
+    font-size:2rem;
+    font-weight:900;
+}
+.CardView-main-info-autor{
+    font-size:1rem;
+    font-weight:900;
+}
+.CardView-main-info-date{
+    font-size:1rem;
+    font-weight:900;
+}
+
+.CardView-channel-content{
+    font-size:1.5rem;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    flex-wrap:nowrap;
+}
+.CardView-channel-content-button{
+    padding:5px 20px;
+    border:none;
+    background:#E2E2E2;
+    transition:background 0.5s;
+    border-radius:20px;
+    font-weight:900;
+    box-shadow:2px 2px 10px rgba(0,0,0,.2);
+}
+.CardView-channel-content-button:focus{
+    outline:none;
+}
+.CardView-channel-content-button:hover{
+    background:#8380776e;
+}
+
 @media(max-width: 600px){
     .CardView-back-button{
         display: none;
@@ -40,9 +91,22 @@
     .CardView-container{
         margin:0px;
         border-radius:0px;
-        border:solid;
         width: 100vw;
         height:auto;
         min-height: 300px;
+        grid-template-columns:1fr;
+        grid-template-rows: 1fr 1fr;
+        padding:10px;
+    }
+    .CardView-channel-content-button{
+        color:black;
+    }
+    .CardView-channel-content{
+        width: 100%;
+    }
+    .CardView-channel-content{
+        font-size:1rem;
+        justify-content:space-between;
+
     }
 }
