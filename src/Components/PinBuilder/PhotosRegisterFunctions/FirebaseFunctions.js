@@ -34,6 +34,7 @@ const FirestoreAddImage = async (Title, Description, UserInfo, PhotoUrl) => {
                         PhotoUrl,
                         UserName: UserInfo.displayName,
                         UserEmail: UserInfo.email,
+                        PhotoUrlUser:UserInfo.photoURL,
                         id: JSON.stringify(new Date())
                     })
                 })

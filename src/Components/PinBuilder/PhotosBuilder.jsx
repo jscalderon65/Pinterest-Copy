@@ -134,15 +134,15 @@ const PhotosBuilder = ({ userInfo }) => {
               autoComplete="off"
               className="PinBuilder-input-title"
               type="text"
-              maxLength="100"
+              maxLength="50"
               required
               onBlur={titleBlurState}
               onFocus={titleBlurState}
             />
             <br />
             {titleBlur
-              ? `Se mostraran los primeros 23 caracteres   ${
-                  100 - TitleValue.length
+              ? `Se mostraran los primeros 50 caracteres   ${
+                  50 - TitleValue.length
                 }`
               : null}
           </div>
@@ -157,7 +157,7 @@ const PhotosBuilder = ({ userInfo }) => {
             autoComplete="off"
             className="PinBuilder-input-description"
             type="text"
-            maxLength="100"
+            maxLength="50"
           />
         </div>
       </form>

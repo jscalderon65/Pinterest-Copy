@@ -11,7 +11,7 @@ import { CardContainer } from "./index.js";
 import { Link } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-const SearchView = () => {
+const SearchView = ({userInfo}) => {
   useEffect(() => {
     scroll.scrollToTop();
   }, []);
@@ -114,6 +114,7 @@ const SearchView = () => {
           >
             <Masonry gutter="15px" columnsCount={4}>
               {CoursesFiltered.map((item) => (
+                item.Type==="song"?
                 <CardContainer
                   Title={item.YoutubeInfo.title}
                   ChannelUrlImage={item.YoutubeInfo.urlImageChannel}
@@ -128,7 +129,21 @@ const SearchView = () => {
                       alt={item.YoutubeInfo.title}
                     />
                   </Link>
-                </CardContainer>
+                </CardContainer>:<CardContainer
+                Title={item.Title}
+                ChannelUrlImage={userInfo.photoURL}
+                key={item.Date}
+                ImageHref={item.PhotoUrl.urlImagen}
+                MainUrl={item.PhotoUrl.urlImagen}
+              >
+                <Link to={`/home/${item.id}`}>
+                <img
+                    className="CardContainer-gallery_img"
+                    src={item.PhotoUrl.urlImagen}
+                    alt={item.Title}
+                  />
+                </Link>
+              </CardContainer>
               ))}
             </Masonry>
           </ResponsiveMasonry>
