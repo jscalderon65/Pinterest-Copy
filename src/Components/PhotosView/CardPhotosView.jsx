@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { deletePhoto } from "./PhotosViewFunctions/FirebaseFunctions.js";
 import { Popover, Button, Drawer, Tooltip, Popconfirm } from "antd";
+import EditModal from "./EditModal";
 import { useMediaQuery } from "my-customhook-collection";
 import {
   EllipsisOutlined,
   CloseOutlined,
   DeleteOutlined,
-  EditOutlined
 } from "@ant-design/icons";
 const CardSongsView = ({
   children,
@@ -13,6 +14,7 @@ const CardSongsView = ({
   ChannelUrlImage,
   userInfo,
   ItemId,
+  PhotoUrl
 }) => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
@@ -31,22 +33,22 @@ const CardSongsView = ({
 
   const content = (
     <>
-    <Popconfirm
-      placement="topLeft"
-      title={"¿Quieres eliminar el Pin?"}
-      onConfirm={()=>alert("si")}
-      okText="Yes"
-      cancelText="No"
-    >
-      <Button
-        style={{ width: "100%", display: "flex", alignItems: "center" }}
-        size="large"
-        danger
+      <Popconfirm
+        placement="topLeft"
+        title={"¿Quieres eliminar el Pin?"}
+        onConfirm={() => deletePhoto(userInfo.uid, ItemId,PhotoUrl.ImageName)}
+        okText="Yes"
+        cancelText="No"
       >
-        <DeleteOutlined style={{ marginRight: "5px" }} />
-        Eliminar Pin
-      </Button>
-    </Popconfirm>
+        <Button
+          style={{ width: "100%", display: "flex", alignItems: "center" }}
+          size="large"
+          danger
+        >
+          <DeleteOutlined style={{ marginRight: "5px" }} />
+          Eliminar Pin
+        </Button>
+      </Popconfirm>
     </>
   );
   return (
@@ -87,9 +89,7 @@ const CardSongsView = ({
                   <EllipsisOutlined />
                 </button>
               </Popover>
-              <button className="CardContainer-button-style hover-button--on">
-                  <EditOutlined />
-                </button>
+              <EditModal isButton />
             </div>
           </>
         ) : (
@@ -127,9 +127,18 @@ const CardSongsView = ({
                 </h5>
               </div>
               <div className="CardContainer-drawer-content">
-                <h5>
-                    <b>Editar</b>
-                </h5>
+                <EditModal />
+                <Popconfirm
+                  placement="topLeft"
+                  title={"¿Quieres eliminar el Pin?"}
+                  onConfirm={() => deletePhoto(userInfo.uid, ItemId, PhotoUrl.ImageName)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <h5>
+                    <b> Eliminar </b>
+                  </h5>
+                </Popconfirm>
               </div>
             </Drawer>
           </>

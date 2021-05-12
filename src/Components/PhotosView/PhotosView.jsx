@@ -47,6 +47,7 @@ const SongsView = ({ userInfo }) => {
             {DataInfo.map((item) => (
               <CardPhotosView
                 userInfo={userInfo}
+                PhotoUrl={item.PhotoUrl}
                 Title={item.Title}
                 ChannelUrlImage={Data && item.PhotoUrlUser}
                 key={item.Date}
