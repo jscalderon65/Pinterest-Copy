@@ -5,6 +5,7 @@ import {
   EllipsisOutlined,
   CloseOutlined,
   DeleteOutlined,
+  EditOutlined
 } from "@ant-design/icons";
 const CardSongsView = ({
   children,
@@ -29,6 +30,7 @@ const CardSongsView = ({
   );
 
   const content = (
+    <>
     <Popconfirm
       placement="topLeft"
       title={"¿Quieres eliminar el Pin?"}
@@ -45,6 +47,7 @@ const CardSongsView = ({
         Eliminar Pin
       </Button>
     </Popconfirm>
+    </>
   );
   return (
     <div className="CardContainer-container hover-button animate__animated animate__fadeIn">
@@ -84,6 +87,9 @@ const CardSongsView = ({
                   <EllipsisOutlined />
                 </button>
               </Popover>
+              <button className="CardContainer-button-style hover-button--on">
+                  <EditOutlined />
+                </button>
             </div>
           </>
         ) : (
@@ -121,17 +127,9 @@ const CardSongsView = ({
                 </h5>
               </div>
               <div className="CardContainer-drawer-content">
-                <Popconfirm
-                  placement="topLeft"
-                  title={"¿Quieres eliminar el Pin?"}
-                  onConfirm={()=>alert("si")}
-                  okText="Yes"
-                  cancelText="No"
-                >
-                  <h5>
-                    <b>Eliminar Pin</b>
-                  </h5>
-                </Popconfirm>
+                <h5>
+                    <b>Editar</b>
+                </h5>
               </div>
             </Drawer>
           </>
