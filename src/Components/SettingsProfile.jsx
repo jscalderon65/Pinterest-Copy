@@ -24,9 +24,15 @@ const SettingsProfile = ({ userInfo: { displayName } }) => {
           className="SettingsProfile-cards-info-container-songs"
           onClick={() => history.push("/settings/songs")}
         >
-          Canciones
+          <i class="fas fa-music fa-3x"></i>
+          <br/>
+          <h4><b>Canciones</b></h4>
         </div>
-        <div onClick={() => history.push("/settings/photos")}>Photos</div>
+        <div onClick={() => history.push("/settings/photos")}>
+        <i class="far fa-images fa-3x"></i>
+          <br/>
+          <h4><b>Fotos</b></h4>
+          </div>
       </div>
       <br />
       <br />

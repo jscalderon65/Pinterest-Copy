@@ -40,7 +40,7 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
               <img
                 className="CardContainer-img-hover"
                 src={ChannelUrlImage}
-                alt="No"
+                alt=""
                 style={{
                   width: "30px",
                   height: "30px",
