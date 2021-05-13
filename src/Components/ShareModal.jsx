@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 
 const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click") }) => {
-  const mediaQuery = useMediaQuery("(max-width:600px)")
+  const mediaQuery = useMediaQuery("(max-width:600px)");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);

@@ -30,5 +30,29 @@ const deletePhoto = async (DocId, PhotoId, PhotoTitle) => {
     } catch {
         error("Error al eliminar Pin");
     }
-}
-export { deletePhoto };
+};
+const editPhoto = async (DocId, PhotoId, Title, Description) => {
+    try {
+        info("Espera",3);
+        const response = await firebase.firestore().collection("Content").doc(DocId).get();
+        const Data = response.data().contentArray
+        await firebase
+            .firestore()
+            .collection(`Content`)
+            .doc(DocId)
+            .update({
+                contentArray: Data.map(item =>{
+                    if(item.id===PhotoId){
+                        item.Title=Title;
+                        item.Description=Description;
+                    }
+                    return item
+                })
+            });
+        success("Cambios guardados");
+    } catch {
+        error("Error al eliminar Pin");
+    }
+};
+
+export { deletePhoto,editPhoto };

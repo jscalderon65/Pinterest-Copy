@@ -49,6 +49,7 @@ const SongsView = ({ userInfo }) => {
                 userInfo={userInfo}
                 PhotoUrl={item.PhotoUrl}
                 Title={item.Title}
+                Description={item.Description}
                 ChannelUrlImage={Data && item.PhotoUrlUser}
                 key={item.Date}
                 ImageHref={item.PhotoUrlUser}

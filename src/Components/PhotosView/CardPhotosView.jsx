@@ -11,10 +11,11 @@ import {
 const CardSongsView = ({
   children,
   Title = "",
+  Description = "",
   ChannelUrlImage,
   userInfo,
   ItemId,
-  PhotoUrl
+  PhotoUrl,
 }) => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
@@ -36,7 +37,7 @@ const CardSongsView = ({
       <Popconfirm
         placement="topLeft"
         title={"¿Quieres eliminar el Pin?"}
-        onConfirm={() => deletePhoto(userInfo.uid, ItemId,PhotoUrl.ImageName)}
+        onConfirm={() => deletePhoto(userInfo.uid, ItemId, PhotoUrl.ImageName)}
         okText="Yes"
         cancelText="No"
       >
@@ -89,7 +90,13 @@ const CardSongsView = ({
                   <EllipsisOutlined />
                 </button>
               </Popover>
-              <EditModal isButton />
+              <EditModal
+                isButton
+                ItemId={ItemId}
+                Description={Description}
+                Title={Title}
+                UserId={userInfo.uid}
+              />
             </div>
           </>
         ) : (
@@ -127,11 +134,19 @@ const CardSongsView = ({
                 </h5>
               </div>
               <div className="CardContainer-drawer-content">
-                <EditModal />
+                <EditModal
+                  onClose={onClose}
+                  ItemId={ItemId}
+                  Description={Description}
+                  Title={Title}
+                  UserId={userInfo.uid}
+                />
                 <Popconfirm
                   placement="topLeft"
                   title={"¿Quieres eliminar el Pin?"}
-                  onConfirm={() => deletePhoto(userInfo.uid, ItemId, PhotoUrl.ImageName)}
+                  onConfirm={() =>
+                    deletePhoto(userInfo.uid, ItemId, PhotoUrl.ImageName)
+                  }
                   okText="Yes"
                   cancelText="No"
                 >
