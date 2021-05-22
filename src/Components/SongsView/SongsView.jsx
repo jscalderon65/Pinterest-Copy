@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Empty } from "antd";
 import { animateScroll as scroll } from "react-scroll";
 import NavbarSongsView from "../NavbarSongsView";
 import { useHistory } from "react-router-dom";
@@ -17,7 +18,7 @@ const SongsView = ({ userInfo }) => {
   const PlusFunction = () => history.push("/pin-builder/songs");
   useEffect(() => {
     Data &&
-    Data.filter((item) => item.id === userInfo.uid).length>0&&
+      Data.filter((item) => item.id === userInfo.uid).length > 0 &&
       setDataInfo(
         Data.filter((item) => item.id === userInfo.uid)[0].contentArray.filter(
           (item) => item.Type === "song"
@@ -27,7 +28,7 @@ const SongsView = ({ userInfo }) => {
   useEffect(() => {
     scroll.scrollToTop();
   }, []);
-/*   console.log(Data, DataInfo); */
+  /*   console.log(Data, DataInfo); */
   return Data ? (
     <>
       <NavbarSongsView
@@ -39,32 +40,36 @@ const SongsView = ({ userInfo }) => {
       <br />
       <br />
       <div className="HomeContainer-home-container  animate__animated animate__fadeIn">
-        <ResponsiveMasonry
-          className="masonry"
-          columnsCountBreakPoints={{ 350: 2, 800: 3, 1100: 4 }}
-        >
-          <Masonry gutter="15px" columnsCount={4}>
-            {DataInfo.map((item) => (
-              <CardSongsView
-                userInfo={userInfo}
-                Title={item.YoutubeInfo.title}
-                ChannelUrlImage={item.YoutubeInfo.urlImageChannel}
-                key={item.Date}
-                ImageHref={item.YoutubeInfo.urlImageVideo}
-                MainUrl={item.YoutubeUrl}
-                ItemId={item.id}
-              >
-                <Link to={`/home/${item.id}`}>
-                  <img
-                    className="CardContainer-gallery_img"
-                    src={item.YoutubeInfo.urlImageVideo}
-                    alt={item.YoutubeInfo.title}
-                  />
-                </Link>
-              </CardSongsView>
-            ))}
-          </Masonry>
-        </ResponsiveMasonry>
+        {DataInfo.length > 0 ? (
+          <ResponsiveMasonry
+            className="masonry"
+            columnsCountBreakPoints={{ 350: 2, 800: 3, 1100: 4 }}
+          >
+            <Masonry gutter="15px" columnsCount={4}>
+              {DataInfo.map((item) => (
+                <CardSongsView
+                  userInfo={userInfo}
+                  Title={item.YoutubeInfo.title}
+                  ChannelUrlImage={item.YoutubeInfo.urlImageChannel}
+                  key={item.Date}
+                  ImageHref={item.YoutubeInfo.urlImageVideo}
+                  MainUrl={item.YoutubeUrl}
+                  ItemId={item.id}
+                >
+                  <Link to={`/home/${item.id}`}>
+                    <img
+                      className="CardContainer-gallery_img"
+                      src={item.YoutubeInfo.urlImageVideo}
+                      alt={item.YoutubeInfo.title}
+                    />
+                  </Link>
+                </CardSongsView>
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
+        ) : (
+          <Empty description={<span>No tienes ningún Pin</span>} />
+        )}
       </div>
       <br />
       <br />

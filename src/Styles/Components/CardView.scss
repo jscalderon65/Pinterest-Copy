@@ -22,14 +22,16 @@
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   }
 .CardView-img-container{
-    height: 90vh;
+    min-height: 90vh;
+    height:auto;
     margin:0;
     padding:0;
 }
 .CardView-img{
     width: 100%;
     object-fit: cover;
-    height:90vh;
+    min-height: 90vh;
+    height:auto;
     border-top-left-radius:40px;
     border-bottom-left-radius:40px;  
 }
@@ -68,6 +70,7 @@
     justify-content:space-around;
     flex-wrap:nowrap;
     flex-direction:column;
+    margin-bottom:20px;
 }
 .CardView-channel-content-button{
     padding:5px 20px;
