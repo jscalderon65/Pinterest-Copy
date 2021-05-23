@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import {useMediaQuery} from 'my-customhook-collection';
+import { useMediaQuery } from "my-customhook-collection";
 import { Modal, Button, message, Input } from "antd";
 import {
   UploadOutlined,
   CopyOutlined,
   WhatsAppOutlined,
-  CloseOutlined
+  CloseOutlined,
 } from "@ant-design/icons";
 
-const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click") }) => {
+const ShareModal = ({
+  MainUrl,
+  IsResponsive,
+  onClickModal = () => console.log("click"),
+}) => {
   const mediaQuery = useMediaQuery("(max-width:600px)");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -25,7 +29,7 @@ const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click"
   };
   const copyButton = (id_elemento) => {
     var aux = document.createElement("input");
-    aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+    aux.setAttribute("value", document.getElementById(id_elemento).textContent);
     document.body.appendChild(aux);
     aux.select();
     document.execCommand("copy");
@@ -33,7 +37,9 @@ const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click"
     message.success("Texto copiado en el portapapeles");
   };
   const shareWhatsapp = (text) => {
-    window.open(`https://api.whatsapp.com/send?text=${text}`);
+    window.open(
+      `https://api.whatsapp.com/send?text=${text.replace("&"," ")}`
+    );
   };
   return (
     <>
@@ -46,17 +52,27 @@ const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click"
           <UploadOutlined />
         </button>
       ) : (
-        <h5 onClick={showModal}><b>Compartir</b></h5>
+        <h5 onClick={showModal}>
+          <b>Compartir</b>
+        </h5>
       )}
 
       <Modal
         title={null}
         footer={null}
-        bodyStyle={mediaQuery?{color:"white",backgroundColor:"#323031" }:{color:"black" }}
+        bodyStyle={
+          mediaQuery
+            ? { color: "white", backgroundColor: "#323031" }
+            : { color: "black" }
+        }
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        closeIcon={<CloseOutlined  style={mediaQuery?{color:"white"}:{color:"black"}}/>}
+        closeIcon={
+          <CloseOutlined
+            style={mediaQuery ? { color: "white" } : { color: "black" }}
+          />
+        }
         zIndex={1000}
       >
         <div className="ShareModal-container">
@@ -79,17 +95,24 @@ const ShareModal = ({ MainUrl, IsResponsive,onClickModal=()=>console.log("click"
           <div className="ShareModal-copy">
             <div className="ShareModal-copy-content">
               <p id="copy-text" style={{ display: "none" }}>
-                {MainUrl}
+                {MainUrl.toString().replace("&amp;", "&")}
               </p>
-              <Input style={{ border: "none",backgroundColor:mediaQuery?"#323031":"transparent",color:mediaQuery?"white":"black" }} value={MainUrl} />
+              <Input
+                style={{
+                  border: "none",
+                  backgroundColor: mediaQuery ? "#323031" : "transparent",
+                  color: mediaQuery ? "white" : "black",
+                }}
+                value={MainUrl.toString().replace("&amp;", "&")}
+              />
               <Button
                 style={{
                   marginLeft: "5px",
                   border: "none",
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor:mediaQuery?"#323031":"transparent",
-                  color:mediaQuery?"white":"black"
+                  backgroundColor: mediaQuery ? "#323031" : "transparent",
+                  color: mediaQuery ? "white" : "black",
                 }}
                 onClick={() => copyButton("copy-text")}
               >
