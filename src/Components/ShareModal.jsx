@@ -95,7 +95,7 @@ const ShareModal = ({
           <div className="ShareModal-copy">
             <div className="ShareModal-copy-content">
               <p id="copy-text" style={{ display: "none" }}>
-                {MainUrl.toString().replace("&amp;", "&")}
+                {MainUrl.replace("&amp;", "&")}
               </p>
               <Input
                 style={{
@@ -103,7 +103,7 @@ const ShareModal = ({
                   backgroundColor: mediaQuery ? "#323031" : "transparent",
                   color: mediaQuery ? "white" : "black",
                 }}
-                value={MainUrl.toString().replace("&amp;", "&")}
+                value={MainUrl.replace("&amp;", "&")}
               />
               <Button
                 style={{

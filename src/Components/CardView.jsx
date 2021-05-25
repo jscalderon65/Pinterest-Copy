@@ -44,7 +44,7 @@ const CardView = ({ userInfo }) => {
             />
             <div className="CardView-content">
               <div className="CardView-content-buttons">
-                <ShareModal MainUrl={DataInfo.YoutubeUrl} />
+                {/* <ShareModal MainUrl={DataInfo.YoutubeUrl} /> */}
                 <button className="PinBuilder-container-save-button">
                   Canción
                 </button>
@@ -108,7 +108,7 @@ const CardView = ({ userInfo }) => {
             />
             <div className="CardView-content">
               <div className="CardView-content-buttons">
-                <ShareModal MainUrl={Data && DataInfo.PhotoUrl?.urlImagen} />
+                {/* <ShareModal MainUrl={Data && DataInfo.PhotoUrl?.urlImagen} /> */}
                 <button className="PinBuilder-container-save-button">
                   Imagen
                 </button>
