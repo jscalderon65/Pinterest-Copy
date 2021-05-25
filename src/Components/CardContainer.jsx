@@ -22,6 +22,7 @@ const CardContainer = ({ children, Title = "", ChannelUrlImage,ImageHref,MainUrl
       <b>Opciones</b>
     </h5>
   );
+
   const content = (
     <Button style={{ width: "100%" }}  size="large">
       <a href={ImageHref} target="blank" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>

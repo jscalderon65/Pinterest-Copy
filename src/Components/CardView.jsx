@@ -5,7 +5,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useHistory, useParams } from "react-router-dom";
 import { firebase } from "../Firebase/FirebaseConfig.js";
 import { useOnSnapshotCollection } from "my-customhook-collection";
-import ShareModal from "./ShareModal";
+import { animateScroll as scroll } from "react-scroll";
 const CardView = ({ userInfo }) => {
   let history = useHistory();
   const Params = useParams();
@@ -16,6 +16,9 @@ const CardView = ({ userInfo }) => {
   const GoToLink = (url) => {
     window.open(url);
   };
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, []);
   useEffect(() => {
     Data &&
       setDataInfo(
